@@ -1,11 +1,11 @@
 public class Planet {
-    double xxPos;
-    double yyPos;
-    double xxVel;
-    double yyVel;
-    double mass;
-    String imgFileName;
-    static  double G=6.67*1e-11;
+    public double xxPos;
+    public double yyPos;
+    public double xxVel;
+    public double yyVel;
+    public double mass;
+    public String imgFileName;
+    private static  double G=6.67*1e-11;
     public Planet(double xP, double yP, double xV,
                   double yV, double m, String img)
     {
@@ -38,29 +38,15 @@ public class Planet {
     }
     public double calcForceExertedByX(Planet b)
     {
-        double dx=0.0;
-        if (b.xxPos-xxPos<0)
-        {
-            dx =xxPos-b.xxPos;
-        }
-        else
-        {
-            dx=b.xxPos-xxPos;
-        }
+
+        double dx=b.xxPos-xxPos;
         double F=this.calcForceExertedBy(b)*dx/this.calcDistance(b);
         return F;
     }
     public double calcForceExertedByY(Planet b)
     {
-        double dy=0.0;
-        if (b.yyPos-yyPos<0)
-        {
-          dy =yyPos-b.yyPos;
-        }
-        else
-        {
-             dy=b.yyPos-yyPos;
-        }
+
+        double dy=b.yyPos-yyPos;
         double F=this.calcForceExertedBy(b)*dy/this.calcDistance(b);
         return F;
     }
