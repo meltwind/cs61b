@@ -14,14 +14,14 @@ public class ArrayDeque<T> {
     private void resize(int cap)
     {
         T []newarray=(T [])new Object[cap];
-        int size=size();
+        int size=this.size();
         if(right>left)
         {
             System.arraycopy(items,left,newarray,0,size);
 
-        }else {
-            System.arraycopy(items,left,newarray,0,size-left);
-            System.arraycopy(items,0,newarray,size-left,right);
+        }else if(left>right){
+            System.arraycopy(items,left,newarray,0,capaticy-left);
+            System.arraycopy(items,0,newarray,capaticy-left,right);
         }
         left=0;
         right=size;
@@ -113,6 +113,7 @@ public class ArrayDeque<T> {
             System.out.print(" ");
         }
     }
+
 
 
 
