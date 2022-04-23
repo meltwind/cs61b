@@ -114,15 +114,6 @@ public class ArrayDeque<T> {
         }
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> ls=new ArrayDeque();
-        ls.addFirst(1);
-        ls.addLast(2);
-        ls.addFirst(3);
-       ls.addFirst(5);
-       ls.addLast(7);
-      ls.removeLast();
-        ls.printDeque();
-    }
+
 
 }
