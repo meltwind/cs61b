@@ -1,8 +1,9 @@
 
-public class ArrayDeque<T> {
+public class ArrayDeque<T>implements Deque<T> {
     /**
      * Creates an empty list.
      */
+
     private T[] items;
     private static int capaticy = 8;
     private int right;
@@ -35,7 +36,7 @@ public class ArrayDeque<T> {
     private boolean isFull() {
         return size() == capaticy - 1;
     }
-
+    @Override
     public void addFirst(T x) {
         if (isFull()) {
             resize((int) (capaticy * 1.5));
@@ -43,7 +44,7 @@ public class ArrayDeque<T> {
         left = (left - 1 + capaticy) % capaticy;
         items[left] = x;
     }
-
+    @Override
     public void addLast(T x) {
         if (isFull()) {
             resize((int) (capaticy * 1.5));
@@ -67,21 +68,22 @@ public class ArrayDeque<T> {
     /**
      * Gets the ith item in the list (0 is the front).
      */
+    @Override
     public T get(int i) {
         return items[(left + i) % capaticy];
     }
-
+    @Override
     public boolean isEmpty() {
         return (left == right);
     }
 
     /**
      * Returns the number of items in the list.
-     */
+     */@Override
     public int size() {
         return (right - left + capaticy) % capaticy;
     }
-
+    @Override
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -95,7 +97,7 @@ public class ArrayDeque<T> {
         return result;
 
     }
-
+    @Override
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -113,7 +115,7 @@ public class ArrayDeque<T> {
     private boolean isLowUsageRate() {
         return capaticy >= 16 && (this.size() / (double) capaticy < 0.25);
     }
-
+    @Override
     public void printDeque() {
         for (int i = 0; i < size(); i++) {
             System.out.print(get(i));
