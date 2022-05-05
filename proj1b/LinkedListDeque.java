@@ -5,7 +5,7 @@ public class LinkedListDeque<T> implements Deque<T> {
     private IntNode sentinel = new IntNode(null, null, null);
     private int size;
 
-    private class IntNode {
+   private class IntNode {
         public IntNode prev;
         public T item;
         public IntNode next;
@@ -27,7 +27,7 @@ public class LinkedListDeque<T> implements Deque<T> {
 
     }
 
-    private LinkedListDeque(T x) {
+   public LinkedListDeque(T x) {
         size = 1;
         IntNode newnode = new IntNode(sentinel, x, sentinel);
         sentinel.next = newnode;
@@ -122,6 +122,13 @@ public class LinkedListDeque<T> implements Deque<T> {
             System.out.print(p.item);
             System.out.print(" ");
             p = p.next;
+        }
+    }
+    @Override
+    public void print(){
+        System.out.println("success");
+        for(IntNode p=sentinel.next;p!=sentinel;p=p.next){
+            System.out.print(p.item+" ");
         }
     }
 
