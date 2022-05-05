@@ -62,16 +62,16 @@ public class TestArrayDequeGold {
                 if(!sad2.isEmpty()&&!sad3.isEmpty()){
                 Integer num1=sad2.removeFirst();
                 Integer num2=sad3.removeFirst();
-                failsequence+="removeFirst(): "+num1+"\n";
-                assertEquals(failsequence,num1,num2);
+                assertEquals(failsequence,num2,num1);
+                failsequence = failsequence + "removeFirst()\n";
 
                 }
             }else{
                 if(!sad2.isEmpty()&&!sad3.isEmpty()) {
                     Integer num1 = sad2.removeLast();
                     Integer num2 = sad3.removeLast();
-                    failsequence+="removeLast(): "+num1+"\n";
-                    assertEquals(failsequence, num1, num2);
+                    assertEquals(failsequence, num2, num1);
+                    failsequence = failsequence + "removeLast()\n";
 
                 }
             }
