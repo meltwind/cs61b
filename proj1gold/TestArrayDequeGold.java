@@ -48,7 +48,7 @@ public class TestArrayDequeGold {
         StudentArrayDeque<Integer> sad2 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> sad3 = new ArrayDequeSolution<>();
         String failsequence = new String();
-        for(int i=0;i<100;i+=1){
+        for(int i=0;i<200;i+=1){
            double  numberBetweenZeroAndOne = StdRandom.uniform();
             if(numberBetweenZeroAndOne>0.75){
                 sad2.addFirst(i);
