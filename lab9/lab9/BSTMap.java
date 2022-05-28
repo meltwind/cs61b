@@ -146,6 +146,9 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
             return null;
         }
         V value = get(key);
+        if(value == null){
+            return null;
+        }
         int cmp = key.compareTo(p.key);
         if(cmp > 0){
             remove(key,p.right);
@@ -164,7 +167,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
 
     private Node deleteMin(Node p){
         if(p.left == null){
-            return p;
+            return p.right;
         }
         p.left = deleteMin(p.left);
         p.size = 1 + getSize(p.right) + getSize(p.left);
@@ -201,6 +204,8 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         BSTMap<String, Integer > bstMap = new BSTMap();
         bstMap.put("cat",1);
         bstMap.put("dog",2);
+        bstMap.put("pig",3);
+        bstMap.remove("ddd");
         for(String items:bstMap){
             System.out.println(items);
         }

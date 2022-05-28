@@ -1,5 +1,7 @@
 package lab9;
 
+import edu.princeton.cs.algs4.In;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -101,7 +103,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     @Override
     public Set<K> keySet() {
         Set se = new HashSet<>();
-        for(int i = 0;i<size;i++){
+        for(int i = 0;i< buckets.length;i++){
             for(K items:buckets[i]){
                 se.add(items);
             }
@@ -136,5 +138,12 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return keySet().iterator();
     }
 
+    public static void main(String[] args) {
+        MyHashMap<String, Integer> my = new MyHashMap();
+        my.put("dog",1);
+        my.put("cat",2);
+        my.put("fish",3);
+        System.out.println(my.keySet());
+    }
 
 }
