@@ -28,6 +28,9 @@ public class TETile {
     private final String description;
     private final String filepath;
 
+
+
+
     /**
      * Full constructor for TETile objects.
      * @param character The character displayed on the screen.
@@ -43,6 +46,7 @@ public class TETile {
         this.backgroundColor = backgroundColor;
         this.description = description;
         this.filepath = filepath;
+
     }
 
     /**
@@ -60,6 +64,8 @@ public class TETile {
         this.description = description;
         this.filepath = null;
     }
+
+
 
     /**
      * Creates a copy of TETile t, except with given textColor.

@@ -126,4 +126,8 @@ public class ArrayMap<K, V> implements Map61B<K, V> {
         }
         return returnValue;
     }
+
+    public static void main(String[] args) {
+        System.out.println(5/2);
+    }
 }
