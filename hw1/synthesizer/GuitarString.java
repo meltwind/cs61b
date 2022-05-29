@@ -39,7 +39,7 @@ public class GuitarString {
         buffer.enqueue(DECAY * 0.5 * (frontSample + sample()));
     }
 
-    /* Return the double at the front of the buffer. */
+    /* Return the double at the front ofF the buffer. */
     public double sample() {
 
         return buffer.peek();

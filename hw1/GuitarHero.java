@@ -17,18 +17,18 @@ public class GuitarHero {
             if (StdDraw.hasNextKeyTyped()) {
                 char key = StdDraw.nextKeyTyped();
                 flag = guitar.keyboard.indexOf(key);
-                if(flag<0||flag>=37) {
-                   flag = 0;
+                if (flag < 0 || flag >= 37) {
+                    flag = 0;
                 }
                 guitar.gu[flag].pluck();
             }
-            for(int i = 0;i<guitar.gu.length;i++){
+            for (int i = 0; i < guitar.gu.length; i++) {
                 sample += guitar.gu[i].sample();
             }
             StdAudio.play(sample);
             guitar.gu[flag].tic();
-            for(int i = 0;i<guitar.gu.length;i++){
-                if(i != flag){
+            for (int i = 0; i < guitar.gu.length; i++) {
+                if (i != flag) {
                     guitar.gu[i].tic();
                 }
             }
