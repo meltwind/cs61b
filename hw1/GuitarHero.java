@@ -11,26 +11,22 @@ public class GuitarHero {
             guitar.gu[i] = new GuitarString(440 * Math.pow(2, k));
         }
         while (true) {
-            double sample = 0.0;
-            int flag = 0;
             /* check if the user has typed a key; if so, process it */
             if (StdDraw.hasNextKeyTyped()) {
                 char key = StdDraw.nextKeyTyped();
-                flag = guitar.keyboard.indexOf(key);
+                int flag = guitar.keyboard.indexOf(key);
                 if (flag < 0 || flag >= 37) {
                     flag = 0;
                 }
                 guitar.gu[flag].pluck();
             }
+            double sample = 0.0;
             for (int i = 0; i < guitar.gu.length; i++) {
                 sample += guitar.gu[i].sample();
             }
             StdAudio.play(sample);
-            guitar.gu[flag].tic();
             for (int i = 0; i < guitar.gu.length; i++) {
-                if (i != flag) {
-                    guitar.gu[i].tic();
-                }
+                guitar.gu[i].tic();
             }
         }
     }
