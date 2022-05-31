@@ -8,13 +8,13 @@ public class PercolationStats {
     private int T;
 
     public PercolationStats(int N, int T, PercolationFactory pf) {
-        if (N < 0 || T < 0) {
+        if (N <= 0 || T <= 0) {
             throw new IllegalArgumentException();
         }
         this.T = T;
         array = new double[T];
-        Percolation pe = pf.make(N);
         for (int i = 0; i < T; i++) {
+            Percolation pe = pf.make(N);
             while (!pe.percolates()) {
                 int x, y;
                 do {

@@ -9,7 +9,7 @@ public class Percolation {
     private WeightedQuickUnionUF un;
     private WeightedQuickUnionUF un2;
 
-    Percolation(int n) {
+    public Percolation(int n) {
         if (n < 0) {
             throw new IllegalArgumentException();
         }
