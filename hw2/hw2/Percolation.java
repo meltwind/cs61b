@@ -68,13 +68,17 @@ public class Percolation {
     }
 
     /*check up,left,right has full*/
-    private boolean bound(int num) {
-        if (un2.connected(nn, num + 1) || un2.connected(nn, num - 1)
-                || un2.connected(nn, num - Array[0].length) || (!inBottom(num) && un2.connected(nn, num + Array[0].length))) {
+    private boolean bound(int row, int col) {
+        if ((valid(row, col - 1) && un2.connected(nn, num(row, col - 1))) ||
+                (valid(row, col + 1) && un2.connected(nn, num(row, col + 1))) ||
+                (valid(row - 1, col) && un2.connected(nn, num(row - 1, col))) ||
+                (valid(row + 1, col) && un2.connected(nn, num(row + 1, col)))) {
             return true;
+
         }
         return false;
     }
+
 
     /*connect full site around,if in the top wall,connect topSentinel nn,bottom connect bottomSentinel nn+1*/
     private void connect(int row, int col) {
@@ -82,15 +86,17 @@ public class Percolation {
         if (inTop(num)) {
             un.union(nn, num);
             un2.union(nn, num);
-        } else if (inBottom(num)) {
+        }
+        if (inBottom(num)) {
             un.union(nn + 1, num);
-            if (bound(num)) {
+            if (bound(row, col)) {
                 un.union(nn, num);
                 un2.union(nn, num);
             }
 
-        } else {
-            if (bound(num)) {
+        }
+        if (!inBottom(num) && !inTop(num)) {
+            if (bound(row, col)) {
                 un.union(nn, num);
                 un2.union(nn, num);
             }
@@ -102,6 +108,13 @@ public class Percolation {
         if (row < 0 || row >= Array[0].length || col < 0 || col >= Array.length) {
             throw new IndexOutOfBoundsException();
         }
+    }
+
+    private boolean valid(int row, int col) {
+        if (row < 0 || row >= Array[0].length || col < 0 || col >= Array.length) {
+            return false;
+        }
+        return true;
     }
 
     private void connectPrevious(int row, int col) {
@@ -132,5 +145,8 @@ public class Percolation {
     }
 
     public static void main(String[] args) {
+        Percolation pe = new Percolation(1);
+        pe.open(0, 0);
+        System.out.println(pe.percolates());
     }
 }
