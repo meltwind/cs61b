@@ -40,16 +40,13 @@ public class TestComplexOomage {
     @Test
     public void testWithDeadlyParams() {
         List<Oomage> deadlyList = new ArrayList<>();
-
-        int N = 1000;
-        for (int i = 0; i < N; i++) {
-            List<Integer> ls = new ArrayList<>();
+        for (int i = 1; i < 50; i++) {
+            ArrayList<Integer> params = new ArrayList<>();
             for (int j = 0; j < i; j++) {
-                ls.add(5 * j);
+                params.add(1);
             }
-            ComplexOomage oo = new ComplexOomage(ls);
-            System.out.println((oo.hashCode() & 0x7FFFFFFF) % 10);
-            deadlyList.add(oo);
+            ComplexOomage oom = new ComplexOomage(params);
+            deadlyList.add(oom);
         }
 
         assertTrue(OomageTestUtility.haveNiceHashCodeSpread(deadlyList, 10));
