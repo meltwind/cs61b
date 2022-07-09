@@ -1,8 +1,10 @@
 package hw4.puzzle;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
+
 
 /**
  * Created by hug. See https://goo.gl/MVL8up for details on these puzzles.
@@ -10,6 +12,7 @@ import java.util.Objects;
 public class CommonBugDetector {
     public static class CommonBugPuzzleState implements WorldState {
         private char name;
+
         public CommonBugPuzzleState() {
             name = 's';
         }
@@ -32,14 +35,34 @@ public class CommonBugDetector {
         @Override
         public Iterable<WorldState> neighbors() {
             switch (name) {
-                case('s'): return createWorldStateList(List.of('a', 'x'));
-                case('a'): return createWorldStateList(List.of('b'));
-                case('b'): return createWorldStateList(List.of('c'));
-                case('c'): return createWorldStateList(List.of('d'));
-                case('d'): return createWorldStateList(List.of('e'));
-                case('e'): return createWorldStateList(List.of('g'));
-                case('x'): return createWorldStateList(List.of('c'));
-                default: return null;
+                case ('s'):
+                    ArrayList<Character> ar1 = new ArrayList<>();
+                    ar1.add('a');
+                    ar1.add('x');
+                    return createWorldStateList(ar1);
+                case ('a'):
+                    ArrayList<Character> ar2 = new ArrayList<>();
+                    ar2.add('b');
+                    return createWorldStateList(ar2);
+                case ('b'):
+                case ('x'):
+                    ArrayList<Character> ar3 = new ArrayList<>();
+                    ar3.add('c');
+                    return createWorldStateList(ar3);
+                case ('c'):
+                    ArrayList<Character> ar4 = new ArrayList<>();
+                    ar4.add('d');
+                    return createWorldStateList(ar4);
+                case ('d'):
+                    ArrayList<Character> ar5 = new ArrayList<>();
+                    ar5.add('e');
+                    return createWorldStateList(ar5);
+                case ('e'):
+                    ArrayList<Character> ar6 = new ArrayList<>();
+                    ar6.add('g');
+                    return createWorldStateList(ar6);
+                default:
+                    return null;
             }
         }
 
@@ -80,7 +103,7 @@ public class CommonBugDetector {
         AlphabetEasyPuzzle aep = new AlphabetEasyPuzzle('a');
         Solver s3 = new Solver(aep);
         System.out.println("TODO: Print out the number of total things ever"
-                           + " enqueued in your MinPQ and compare to the comments.");
+                + " enqueued in your MinPQ and compare to the comments.");
         // if you print out the total number of items enqueued by s3
         // it should be approximately 25, not approximately 50.
     }
