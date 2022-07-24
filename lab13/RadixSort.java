@@ -36,32 +36,34 @@ public class RadixSort {
      * @param index  The position to sort the Strings on.
      */
     private static String[] sortHelperLSD(String[] asciis, int index, int length) {
-        int[] counts = new int[257];
+        int[] counts = new int[257];// 1-256 represent the char, 0 represent the pad
         int longest = length - 1 - index;
         for (String i : asciis) {
             if (i.length() <= longest) {
                 counts[0]++;//0 represent the null
             } else {
                 counts[(int) i.charAt(longest) + 1]++;
+                // count the num of each char for calculating the start point of each char
+
             }
         }
         int[] starts = new int[257];
         int pos = 0;
         for (int i = 0; i < starts.length; i++) {
             starts[i] = pos;
-            pos += counts[i];
+            pos += counts[i];//calculate the start position
         }
         String[] sorted = new String[asciis.length];
         int pad = 0;
         for (int i = 0; i < asciis.length; i++) {
             String item = asciis[i];
-            if (item.length() <= longest) {
+            if (item.length() <= longest) {// 0
                 int place = starts[pad];
                 sorted[place] = item;
                 starts[pad] += 1;
-            } else {
+            } else { // 1 - 256
                 char c = item.charAt(longest);
-                int place = starts[(int) c + 1];
+                int place = starts[(int) c + 1];// don't forget + 1!!!
                 sorted[place] = item;
                 starts[(int) c + 1] += 1;
             }

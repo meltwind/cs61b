@@ -75,49 +75,26 @@ public class CountingSort {
             min = Math.min(i, min);
             max = Math.max(i, max);
         }
-        if (min < 0) {
-            int[] newArr = Arrays.copyOf(arr, arr.length);
-            for (int i = 0; i < newArr.length; i++) {
-                newArr[i] += Math.abs(min);
-            }
-            int[] counts = new int[max + Math.abs(min) + 1];
-            for (int i : newArr) {
-                counts[i]++;
-            }
-            int[] starts = new int[max + Math.abs(min) + 1];
-            int pos = 0;
-            for (int i = 0; i < starts.length; i += 1) {
-                starts[i] = pos;
-                pos += counts[i];
-            }
-            int[] sorted2 = new int[newArr.length];
-            for (int i = 0; i < newArr.length; i += 1) {
-                int item = newArr[i];
-                int place = starts[item];
-                sorted2[place] = item;
-                starts[item] += 1;
-            }
-            return sorted2;
-        } else {
-            int[] counts = new int[max + 1];
-            for (int i : arr) {
-                counts[i]++;
-            }
-            int[] starts = new int[max + 1];
-            int pos = 0;
-            for (int i = 0; i < starts.length; i += 1) {
-                starts[i] = pos;
-                pos += counts[i];
-            }
 
-            int[] sorted2 = new int[arr.length];
-            for (int i = 0; i < arr.length; i += 1) {
-                int item = arr[i];
-                int place = starts[item];
-                sorted2[place] = item;
-                starts[item] += 1;
-            }
-            return sorted2;
+        int[] counts = new int[max - min + 1];
+        for (int i : arr) {
+            counts[i - min]++;
         }
+        int[] starts = new int[max - min + 1];
+        int pos = 0;
+        for (int i = 0; i < starts.length; i += 1) {
+            starts[i] = pos;
+            pos += counts[i];
+        }
+
+        int[] sorted2 = new int[arr.length];
+        for (int i = 0; i < arr.length; i += 1) {
+            int item = arr[i];
+            int place = starts[item - min];
+            sorted2[place] = item;
+            starts[item - min] += 1;
+        }
+        return sorted2;
     }
+
 }
