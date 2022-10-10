@@ -12,7 +12,7 @@ public class hallwaygenerate extends helper {
     private Deque<position> positionslist = new LinkedList();
 
     private position randomposition(TETile[][] T, Random random) {
-       return new position(1,1);
+        return new position(1, 1);
       /*  while (true) {
             int x = Math.abs(random.nextInt() % T.length);
             int y = Math.abs(random.nextInt() % T[0].length);

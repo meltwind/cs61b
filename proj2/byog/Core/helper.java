@@ -24,8 +24,9 @@ public class helper {
         pArray[3] = new position(p.xx, p.yy + distance);
         return pArray;
     }
-    public static boolean positionIsaround(position p1,position p2,int distance){
-        return Math.abs(p1.xx-p2.xx)>distance&&Math.abs(p1.yy-p2.yy)>distance;
+
+    public static boolean positionIsaround(position p1, position p2, int distance) {
+        return Math.abs(p1.xx - p2.xx) > distance && Math.abs(p1.yy - p2.yy) > distance;
     }
 
 }
