@@ -22,20 +22,19 @@ public class launch extends helper {
         for (int x = 0; x < 91; x += 1) {
             for (int y = 0; y < 51; y += 1) {
                 world[x][y] = Tileset.NOTHING;
-                if(x%2 ==0){
-                    world[x][y] =Tileset.WALL;
+                if (x % 2 == 0) {
+                    world[x][y] = Tileset.WALL;
                 }
-                if(y%2 ==0){
+                if (y % 2 == 0) {
                     world[x][y] = Tileset.WALL;
                 }
             }
         }
 
-        generateRoom ge =new generateRoom();
-        ge.roomGenerate(random,world);
+        generateRoom ge = new generateRoom();
+        ge.roomGenerate(random, world);
         hallwaygenerate ha = new hallwaygenerate();
-        ha.generatemaze(world,random);
-
+        ha.generatemaze(world, random);
         launch la = new launch();
         la.generateworld(world);
     }
