@@ -159,7 +159,7 @@ public class Boggle {
                 if(o2.length() > o1.length())
                     return 1;
                 if(o2.length() == o1.length()){
-                    return o1.compareTo(o2);
+                    return o2.compareTo(o1);
                 }
                 return 0;
             }
@@ -182,8 +182,10 @@ public class Boggle {
         if(Integer.valueOf(args[0]) <= 0 || !tmpDir.exists()){
             throw new IllegalArgumentException();
         }
-
+        long startTime = System.currentTimeMillis();
         List<String> solveList = solve(Integer.valueOf(args[0]) ,args[1]);
+        long endTime = System.currentTimeMillis();
+        System.out.println("time:" + (endTime - startTime) + "ms");
         Iterator<String> i = solveList.iterator();
         while(i.hasNext()){
             System.out.println(i.next());

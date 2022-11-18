@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ public class HuffmanEncoder {
     }
     public static void main(String[] args){
         char[] inputSymbols = FileUtils.readFile(args[0]);
+
         BinaryTrie bt = new BinaryTrie(buildFrequencyTable(inputSymbols));
         ObjectWriter ow = new ObjectWriter(args[0] + ".huf");
         ow.writeObject(bt);
@@ -26,5 +28,9 @@ public class HuffmanEncoder {
             list.add((BitSequence) hm.get(c));
         }
     ow.writeObject(BitSequence.assemble(list));
+
+
     }
+
+
 }

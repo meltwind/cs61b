@@ -1,18 +1,19 @@
 
 
 import java.io.Serializable;
-import java.util.AbstractMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class BinaryTrie  implements Serializable {
-    private Node root;
-    private static class Node implements Comparable<Node>, Serializable  {
+
+    private static class Node implements Serializable  {
 
 
         private final Node left, right;
         private Map.Entry<Character,Integer> freqEntry;
+        Node(){
+            left = null;
+            right = null;
+        }
 
         Node(Map.Entry<Character,Integer> freq,Node left, Node right)  {
             this.freqEntry = freq;
@@ -27,13 +28,11 @@ public class BinaryTrie  implements Serializable {
         }
 
         // compare, based on frequency
-        public int compareTo(Node that) {
-            return this.freqEntry.getValue()- that.freqEntry.getValue();
-        }
     }
+    private Node root;
 
     public BinaryTrie(Map<Character, Integer> frequencyTable){
-        PriorityQueue<Node> pq = new PriorityQueue<>();
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o.freqEntry.getValue()));
         for(Map.Entry<Character,Integer> en : frequencyTable.entrySet()){
             pq.add(new Node(en,null,null));
         }
