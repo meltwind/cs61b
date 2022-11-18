@@ -51,6 +51,7 @@ public class Solver {
         pq.insert(currentNode);
         while (!pq.isEmpty()) {
             currentNode = pq.delMin();
+
             if (currentNode.state.isGoal()) {
                 break;
             }
@@ -59,7 +60,7 @@ public class Solver {
                 // A critical optimization checks that no enqueued WorldState is its own
                 // grandparent
                 if (currentNode.prev != null && nextState.equals(currentNode.prev.state)) {
-                    continue;
+                    continue;//avoid create new flag to mark visited
                 }
                 pq.insert(newNode);
             }
@@ -67,7 +68,7 @@ public class Solver {
 
 
         for (SearchNode n = currentNode; n != null; n = n.prev) {
-            solution.addFirst(n.state);
+            solution.addFirst(n.state);//get solution
         }
 
     }

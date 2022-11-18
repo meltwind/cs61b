@@ -197,7 +197,7 @@ public class BitSequence implements Serializable {
             bits.set(numBits, true);
         }
         numBits += 1;
-        lastBitNum += 1;
+        lastBitNum += 1;//101
     }
 
     /** Do not make this method public. This is a utility method for
