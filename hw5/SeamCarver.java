@@ -122,7 +122,7 @@ public class SeamCarver {
             } else {
                 return x;
             }
-        } else if (x == MinEnergy.length - 1) {
+        } else if (x == MinEnergy[0].length - 1) {
             if (MinEnergy[x][y + 1] > MinEnergy[x - 1][y + 1]) {
                 return x - 1;
             } else {
