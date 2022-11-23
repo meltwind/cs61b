@@ -114,6 +114,7 @@ public class SeamCarver {
         IsVertical = true;
         return result;
 
+
     }
 
     private int findMinVertical(int x, int y) {
@@ -168,4 +169,3 @@ public class SeamCarver {
 
 
 }
-
