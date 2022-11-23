@@ -111,6 +111,7 @@ public class SeamCarver {
         for (int i = 1; i < MinEnergy[0].length; i++) {
             result[i] = edgeTo[result[i - 1]][i - 1];
         }
+        IsVertical = true;
         return result;
 
     }
